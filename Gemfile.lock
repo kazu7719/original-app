@@ -301,6 +301,7 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
+  nokogiri
   puma (~> 6.0)
   rails (~> 7.1.0)
   selenium-webdriver

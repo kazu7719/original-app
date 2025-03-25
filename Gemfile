@@ -81,3 +81,5 @@ group :production do
 end
 
 gem 'sprockets-rails'
+
+gem 'nokogiri'

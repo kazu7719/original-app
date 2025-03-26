@@ -82,4 +82,4 @@ end
 
 gem 'sprockets-rails'
 
-gem 'nokogiri'
+gem "nokogiri", force_ruby_platform: true

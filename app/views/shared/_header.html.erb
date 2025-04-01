@@ -1,0 +1,21 @@
+ <header class="header">
+  <div class="header__bar row">
+    <h1 class="grid-6"><%= link_to "JOBWIN", root_path %></h1>
+    <% if user_signed_in? %>
+      <div class="user_nav grid-6">
+        <%= form_with url: destroy_user_session_path, method: :delete, local: true do %>
+          <%= submit_tag "ログアウト", class: "logout" %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="grid-6">
+        <%= form_with url: new_user_session_path, method: :get, local: true do %>
+          <%= submit_tag "ログイン", class: "post" %>
+        <% end %>
+        <%= form_with url: new_user_registration_path, method: :get, local: true do %>
+          <%= submit_tag "新規登録", class: "post" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</header>

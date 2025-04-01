@@ -1,0 +1,17 @@
+<%= render "shared/header" %>
+
+  <div class="container">
+    <!-- カレンダー部分 -->
+    <div id="calendar">
+      <h2>カレンダー</h2>
+      <!-- 本物のカレンダーはJSで差し込みます（ここはダミー） -->
+      <div class="calendar-placeholder">ここにカレンダーが表示されます</div>
+    </div>
+
+    <!-- ボタン部分 -->
+    <div class="action-buttons">
+      <button onclick="location.href='/projects/new'">プロジェクトを追加</button>
+      <button onclick="location.href='/tasks/new'">タスクを追加</button>
+      <button onclick="location.href='/goals/new'">目標を追加</button>
+    </div>
+  </div>

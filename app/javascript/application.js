@@ -1,3 +1,19 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
-import "@hotwired/turbo-rails"
-import "controllers"
+import { Calendar } from "fullcalendar"
+
+document.addEventListener("DOMContentLoaded", function () {
+  const calendarEl = document.getElementById("calendar");
+
+  if (calendarEl) {
+    const calendar = new Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      events: '/events',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,listDay'
+      }
+    });
+
+    calendar.render();
+  }
+});

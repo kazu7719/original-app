@@ -138,6 +138,7 @@ GEM
     drb (2.2.1)
     erubi (1.13.1)
     execjs (2.10.0)
+    ffi (1.17.1)
     ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
     globalid (1.2.1)
@@ -318,6 +319,7 @@ GEM
     zeitwerk (2.7.2)
 
 PLATFORMS
+  ruby
   x86_64-darwin-24
   x86_64-linux
 
@@ -333,6 +335,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  ffi
   importmap-rails
   jbuilder
   jquery-rails
@@ -340,6 +343,7 @@ DEPENDENCIES
   nokogiri
   puma (~> 6.0)
   rails (~> 7.1.0)
+  sassc
   selenium-webdriver
   sprockets-rails
   stimulus-rails

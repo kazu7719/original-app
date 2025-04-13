@@ -93,3 +93,7 @@ gem 'jquery-rails'
 gem 'active_hash'
 
 gem 'turbo-rails'
+
+gem 'ffi', platforms: [:ruby]
+
+gem 'sassc', platforms: [:ruby]

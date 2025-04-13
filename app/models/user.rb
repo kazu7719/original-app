@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   extend ActiveHash::Associations::ActiveRecordExtensions
+  has_many :projects
   belongs_to :labor
 
   validates :nickname, :goal, presence: true

@@ -1,3 +1,3 @@
 pin "application"
-
-pin "fullcalendar", to: "https://ga.jspm.io/npm:fullcalendar@6.1.8/index.js"
+pin "@hotwired/turbo-rails", to: "turbo.min.js", preload: true
+pin "fullcalendar", to: "https://cdn.skypack.dev/fullcalendar@6.1.8"

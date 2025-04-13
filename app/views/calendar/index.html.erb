@@ -1,0 +1,17 @@
+<%= render "shared/header" %>
+
+<div class="container">
+  <!-- カレンダー部分 -->
+  <div id="calendar">
+    <h2>カレンダー</h2>
+    <!-- 本物のカレンダーはJSで差し込みます（ここはダミー） -->
+    <div class="calendar-placeholder">ここにカレンダーが表示されます</div>
+  </div>
+
+  <!-- ボタン部分 -->
+  <div class="action-buttons">
+    <%= button_to "プロジェクト", projects_path, method: :get, form_class: "inline-button" %>
+    <%= button_to "タスク", "#", method: :get, form_class: "inline-button" %>
+    <%= button_to "目標", "#", method: :get, form_class: "inline-button" %>
+  </div>
+</div>

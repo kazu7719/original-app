@@ -1,17 +1,31 @@
 <%= render "shared/header" %>
 
-  <div class="container">
-    <!-- カレンダー部分 -->
-    <div id="calendar">
-      <h2>カレンダー</h2>
-      <!-- 本物のカレンダーはJSで差し込みます（ここはダミー） -->
-      <div class="calendar-placeholder">ここにカレンダーが表示されます</div>
-    </div>
+<div class="projects-container">
+    <div class="projects-header">
+  <h2>プロジェクト一覧</h2>
+   <%= link_to "新規登録", new_project_path, class: "btn btn-create" %>
+</div>
+  
+  <% if @projects.any? { |project| project.user_id == current_user.id } %>
+    <div class="project-list">
+      <% @projects.each do |project| %>
+       <% if project.user_id == current_user.id %>
+        <div class="project-card">
+          <h3><%= project.project_name %></h3>
+          <p><strong>期間:</strong> <%= project.start_day.strftime('%Y/%m/%d') %> 〜 <%= project.schedule_end_day.strftime('%Y/%m/%d') %></p>
+          <p><strong>メモ:</strong> <%= project.memo %></p>
+           <p><strong>完了日:</strong> <%= project.end_day %></p>
 
-    <!-- ボタン部分 -->
-    <div class="action-buttons">
-      <button onclick="location.href='/projects/new'">プロジェクトを追加</button>
-      <button onclick="location.href='/tasks/new'">タスクを追加</button>
-      <button onclick="location.href='/goals/new'">目標を追加</button>
+          <!-- 編集・削除ボタンなどが欲しければここに追加 -->
+          <div class="project-actions">
+            <%= link_to "編集", edit_project_path(project.id), class: "btn btn-edit" %>
+             <%= link_to "削除", project_path(project.id), data: {turbo_method: :delete},  class: "btn btn-edit" %>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
     </div>
-  </div>
+  <% else %>
+    <p>まだプロジェクトは登録されていません。</p>
+  <% end %>
+</div>

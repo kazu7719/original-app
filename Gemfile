@@ -94,6 +94,6 @@ gem 'active_hash'
 
 gem 'turbo-rails'
 
-gem 'ffi', platforms: [:ruby]
+gem 'ffi', '~> 1.15.5'
 
 gem 'sassc', platforms: [:ruby]

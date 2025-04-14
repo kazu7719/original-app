@@ -80,8 +80,6 @@ group :production do
   gem 'unicorn', '6.1.0'
 end
 
-gem 'sprockets-rails'
-
 gem "nokogiri", force_ruby_platform: true
 
 gem 'devise'

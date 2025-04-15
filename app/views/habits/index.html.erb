@@ -1,0 +1,29 @@
+<%= render "shared/header" %>
+
+<div class="projects-container">
+    <div class="projects-header">
+  <h2>習慣一覧</h2>
+   <%= link_to "新規登録", new_habit_path, class: "btn btn-create" %>
+</div>
+  
+  <% if @habits.any? { |habit| habit.user_id == current_user.id } %>
+    <div class="project-list">
+      <% @habits.each do |habit| %>
+       <% if habit.user_id == current_user.id %>
+        <div class="project-card">
+          <h3><%= habit.habit_name %></h3>
+          <h4><%= habit.start_day %></h4>
+    
+          <!-- 編集・削除ボタンなどが欲しければここに追加 -->
+          <div class="project-actions">
+            <%= link_to "編集", edit_habit_path(habit.id), class: "btn btn-edit" %>
+             <%= link_to "削除", habit_path(habit.id), data: {turbo_method: :delete},  class: "btn btn-edit" %>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>まだ習慣は登録されていません。</p>
+  <% end %>
+</div>

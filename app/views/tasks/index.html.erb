@@ -1,0 +1,30 @@
+<%= render "shared/header" %>
+
+<div class="projects-container">
+    <div class="projects-header">
+  <h2>タスク一覧</h2>
+   <%= link_to "新規登録", new_task_path, class: "btn btn-create" %>
+</div>
+  
+  <% if @tasks.any? { |task| task.user_id == current_user.id } %>
+    <div class="project-list">
+      <% @tasks.each do |task| %>
+       <% if task.user_id == current_user.id %>
+        <div class="project-card">
+          <h3><%= task.task_name %></h3>
+          <p><strong>期間:</strong> <%= task.start_day.strftime('%Y/%m/%d') %> 〜 <%= task.schedule_end_day.strftime('%Y/%m/%d') %></p>
+           <p><strong>完了日:</strong> <%= task.end_day %></p>
+
+          <!-- 編集・削除ボタンなどが欲しければここに追加 -->
+          <div class="project-actions">
+            <%= link_to "編集", edit_task_path(task.id), class: "btn btn-edit" %>
+             <%= link_to "削除", task_path(task.id), data: {turbo_method: :delete},  class: "btn btn-edit" %>
+          </div>
+        </div>
+      <% end %>
+      <% end %>
+    </div>
+  <% else %>
+    <p>まだタスクは登録されていません。</p>
+  <% end %>
+</div>

@@ -3,18 +3,15 @@ import { Calendar } from "fullcalendar"
 
 function renderCalendar() {
   const el = document.getElementById("calendar");
-  if (!el) return; // カレンダーが存在する画面だけで実行
+  if (!el) return;
 
   const calendar = new Calendar(el, {
     initialView: "dayGridMonth",
-    events: "/events"
+    events: "/events" // ← calendar#events で統合したデータを取得
   });
 
   calendar.render();
 }
 
-// ページ初回読み込み用
 document.addEventListener("DOMContentLoaded", renderCalendar);
-
-// Turbo遷移後の再読み込みにも対応
 document.addEventListener("turbo:load", renderCalendar);

@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_04_06_071003) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_15_110642) do
+  create_table "habits", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "habit_name", null: false
+    t.datetime "start_day", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_habits_on_user_id"
+  end
+
   create_table "projects", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "project_name", null: false
     t.datetime "start_day", null: false
@@ -21,6 +30,17 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_06_071003) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "tasks", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "task_name", null: false
+    t.datetime "start_day", null: false
+    t.datetime "schedule_end_day", null: false
+    t.datetime "end_day"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -38,5 +58,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_04_06_071003) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "habits", "users"
   add_foreign_key "projects", "users"
+  add_foreign_key "tasks", "users"
 end

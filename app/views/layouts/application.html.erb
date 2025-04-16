@@ -6,15 +6,9 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <!-- 外部サービス -->
-  <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
-
-  <!-- CSS -->
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" %>
-  <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.css" %>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.css">
 
-  <!-- JavaScript Importmap -->
   <%= javascript_importmap_tags %>
 </head>
 

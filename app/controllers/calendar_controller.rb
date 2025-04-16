@@ -5,14 +5,15 @@ class CalendarController < ApplicationController
   def events
     projects = Project.all
     tasks = Task.all
-    habits = Habit.all # ← 習慣のデータも取得
+    habits = Habit.all
 
     project_events = projects.map do |project|
       {
         title: project.project_name,
         start: project.start_day,
-        end: project.end_day,
-        className: "project-event"
+        end: project.schedule_end_day.present? ? project.schedule_end_day + 1.day : nil,
+        className: "project-event",
+        allDay: true
       }
     end
 
@@ -20,20 +21,24 @@ class CalendarController < ApplicationController
       {
         title: task.task_name,
         start: task.start_day,
-        end: task.end_day,
-        className: "task-event"
+        end: task.schedule_end_day.present? ? task.schedule_end_day + 1.day : nil,
+        className: "task-event",
+        allDay: true
       }
     end
 
     habit_events = habits.map do |habit|
       {
         title: habit.habit_name,
-        start: habit.start_day,
-        className: "habit-event"
+        rrule: {
+          freq: 'daily',
+          dtstart: habit.start_day.to_date.iso8601
+        },
+        className: "habit-event",
+        allDay: true
       }
     end
 
     render json: project_events + task_events + habit_events
   end
 end
-

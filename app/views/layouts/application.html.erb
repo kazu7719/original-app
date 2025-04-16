@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <title>JOBWIN</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+
+  <!-- 外部サービス -->
   <script type="text/javascript" src="https://js.pay.jp/v2/pay.js"></script>
 
+  <!-- CSS -->
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" %>
   <%= stylesheet_link_tag "https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.8/main.min.css" %>
-  <%= javascript_importmap_tags %> 
+
+  <!-- JavaScript Importmap -->
+  <%= javascript_importmap_tags %>
 </head>
 
 <body>
   <%= yield %>
 </body>
-
 </html>
